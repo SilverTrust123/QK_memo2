@@ -1,2 +1,2 @@
 # QK_memo2
-this for my self used
+劉永平 智慧製造 工業自動化
