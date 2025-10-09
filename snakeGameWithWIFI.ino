@@ -5,8 +5,8 @@
   #include <ESP8266WiFi.h>
   #include <ESP8266WebServer.h>
   
-  const char* ssid = "Silver";    // Wi-Fi 名稱
-  const char* password = "840071003"; // Wi-Fi 密碼
+  const char* ssid = "";    // Wi-Fi 名稱
+  const char* password = ""; // Wi-Fi 密碼
   
   ESP8266WebServer server(80);  // 創建 HTTP 伺服器
   
