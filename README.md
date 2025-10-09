@@ -47,12 +47,12 @@ mitsubishi：要問劉永平型號！
 三明治(名詞)
 github(git)
 plc(名詞解釋)
-ui(名詞解釋)
-aduino
 json
 
 董事長教學:
 區況更新(實例)
+aduino
+ui(名詞解釋)
 
 代辦事項:
 要用什麼語言
