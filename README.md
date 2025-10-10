@@ -49,16 +49,17 @@ github(git)
 plc(名詞解釋)  
 json  
 工業控制  
+aduino  
+esp8266  
 
 董事長教學:  
 區塊更新(實例)  
-aduino  
-esp8266  
 ui(名詞解釋)  
 三明治(名詞)  
 sensor  
 IOT  
 爬蟲  
+現況  
 
 代辦事項:  
 要用什麼語言  
