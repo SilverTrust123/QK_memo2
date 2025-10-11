@@ -11,7 +11,7 @@ src:
     處理邏輯.py
     叫api.py
   main(進入函式)
-apl:
+api:
   .ion
   .py
   .(plc)
@@ -46,7 +46,7 @@ project_root/
 │  │   ├─ 處理邏輯.py        # 特定功能邏輯
 │  │   └─ 叫api.py          # 呼叫外部API
 │
-└─ apl/                     # 特殊應用層（像PLC、I/O、硬體控制）
+└─ api/                     # 特殊應用層（像PLC、I/O、硬體控制）
    ├─ io_driver.py          # 定義I/O通訊方法
    ├─ plc_control.py        # 對PLC控制或資料交換
    └─ config.ion / .py      # 通訊設定或PLC參數
