@@ -1,1 +1,52 @@
 MVC
+src:
+  m:
+    存資料.py
+  V:
+    .js
+    .css
+    .html
+  C:
+    __controller.py
+    處理邏輯.py
+    叫api.py
+  main(進入函式)
+apl:
+  .ion
+  .py
+  .(plc)
+
+
+
+
+
+
+
+project_root/
+│
+├─ main.py                  # 程式進入點（啟動 Controller 或伺服器）
+│
+├─ src/
+│  ├─ M/                    # Model：資料與邏輯
+│  │   ├─ data_model.py     # 定義資料結構或 class
+│  │   ├─ 存資料.py         # 處理資料存取、SQL、或PLC資料
+│  │   └─ ...
+│  │
+│  ├─ V/                    # View：前端或輸出
+│  │   ├─ templates/        # HTML 頁面或前端模板（例如Jinja2）
+│  │   │    └─ index.html
+│  │   ├─ static/           # 靜態資源（CSS, JS）
+│  │   │    ├─ style.css
+│  │   │    └─ script.js
+│  │   └─ render_view.py    # 若用Python產生視圖可放這
+│  │
+│  ├─ C/                    # Controller：業務邏輯與流程控制
+│  │   ├─ __init__.py
+│  │   ├─ controller.py     # 主控制流程
+│  │   ├─ 處理邏輯.py        # 特定功能邏輯
+│  │   └─ 叫api.py          # 呼叫外部API
+│
+└─ apl/                     # 特殊應用層（像PLC、I/O、硬體控制）
+   ├─ io_driver.py          # 定義I/O通訊方法
+   ├─ plc_control.py        # 對PLC控制或資料交換
+   └─ config.ion / .py      # 通訊設定或PLC參數
