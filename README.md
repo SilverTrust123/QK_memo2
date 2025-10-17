@@ -73,3 +73,6 @@ UI
 <-爬蟲weather  原料價格
 
 (python html javasript css php)
+
+
+[ 前端 Frontend (V) ]  <--- HTTP / AJAX / Fetch --->  [ 後端 Backend (C + M) ]  <--- SQL / ORM --->  [ 資料庫 Database (M) ]
