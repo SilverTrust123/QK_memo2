@@ -73,6 +73,8 @@ UI
 畫一張管制圖
 全距 標準差 管制圖
 
+arl
+
 (python html javasript css php)
 
 
