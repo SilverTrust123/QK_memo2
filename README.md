@@ -337,5 +337,7 @@ sum = 20 - 25 RPS
 因此認為是很有餘裕的
 
 
+電力成本積分計算 —— 數值積分 (Numerical Integration)
+
 
 
