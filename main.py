@@ -1,9 +1,14 @@
+pip install scikit-learn
+
+
 import os
 import gc
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow.keras import layers, models, optimizers, backend as K
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from sklearn.manifold import TSNE
 
 # GPU 硬體配置
 gpus = tf.config.experimental.list_physical_devices('GPU')
@@ -75,7 +80,7 @@ def fitness(pos)
     gc.collect()
     return acc
 
-# PSO 引擎
+#PSO
 def pso_engine(mode='original')
     dim = len(BOUNDS)
     pos = np.random.uniform(BOUNDS[, 0], BOUNDS[, 1], (NUM_PARTICLES, dim))
@@ -106,26 +111,24 @@ def pso_engine(mode='original')
         print(f{mode} Iter {t+1} {g_val.4f})
     return g_pos, g_val, hist
 
-# 執行實驗
-# 1. Baseline
+#Baseline
 print(Running Baseline...)
 b_acc = fitness([0.001, 0.3, 64])
 m_b = build_model(0.001, 0.3)
 m_b.save('model_baseline.h5')
 
-# 2. Original PSO
+#Original PSO
 print(Running Original PSO...)
 p_o_pos, p_o_val, h_o = pso_engine('original')
 m_o = build_model(p_o_pos[0], p_o_pos[1])
 m_o.save('model_pso_original.h5')
 
-# 3. Improved PSO
+#Improved PSO
 print(Running Improved PSO...)
 p_i_pos, p_i_val, h_i = pso_engine('improved_ldw')
 m_i = build_model(p_i_pos[0], p_i_pos[1])
 m_i.save('model_pso_improved.h5')
 
-# 繪圖與存檔
 plt.figure(figsize=(12, 5))
 plt.subplot(1, 2, 1)
 plt.plot(h_o, label='Original')
@@ -139,6 +142,41 @@ plt.title('Accuracy Comparison')
 plt.savefig('experiment_results.png')
 plt.show()
 
-# 存儲實驗數據備查
+
+
+def save_confusion_matrix(model, x_test, y_test, name):
+    preds = model.predict(x_test)
+    y_pred = np.argmax(preds, axis=1)
+    cm = confusion_matrix(y_test, y_pred)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=range(10))
+    disp.plot(cmap=plt.cm.Blues)
+    plt.title(f'Confusion Matrix: {name}')
+    plt.savefig(f'cm_{name}.png')
+    plt.close()
+
+
+def save_tsne_plot(model, x_test, y_test, name):
+    feat_model = models.Model(inputs=model.input, outputs=model.layers[-2].output)
+    features = feat_model.predict(x_test)
+    
+    tsne = TSNE(n_components=2, random_state=42)
+    embed = tsne.fit_transform(features)
+    
+    plt.figure(figsize=(8, 6))
+    scatter = plt.scatter(embed[:, 0], embed[:, 1], c=y_test, cmap='tab10', alpha=0.6)
+    plt.colorbar(scatter)
+    plt.title(f'T-SNE Visualization: {name}')
+    plt.savefig(f'tsne_{name}.png')
+    plt.close()
+
+def plot_history(history_dict, name):
+    plt.plot(history_dict['accuracy'], label='train_acc')
+    plt.plot(history_dict['val_accuracy'], label='val_acc')
+    plt.title(f'Training History: {name}')
+    plt.legend()
+    plt.savefig(f'history_{name}.png')
+    plt.close()
+
+# 實驗備查
 with open('log.txt', 'w') as f
     f.write(fBaseline {b_acc}nOriginal PSO {p_o_val} Params {p_o_pos}nImproved PSO {p_i_val} Params {p_i_pos})
