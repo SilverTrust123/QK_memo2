@@ -16,12 +16,12 @@ if gpus:
         tf.config.experimental.set_memory_growth(gpu, True)
 
 
-NUM_CLASSES = 10
+NUM_CLASSES = 15
 INPUT_LENGTH = 2048
 TRAIN_SAMPLES = 500  
 VAL_SAMPLES = 100
 
-NUM_PARTICLES = 6
+NUM_PARTICLES = 15
 NUM_ITERATIONS = 5
 EPOCHS = 5
 
