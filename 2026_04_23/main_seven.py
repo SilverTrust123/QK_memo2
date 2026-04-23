@@ -10,11 +10,11 @@ from tensorflow.keras import layers, models, optimizers, backend as K
 
 NUM_CLASSES = 10
 INPUT_LENGTH = 2048
-TRAIN_SAMPLES = 800 
-VAL_SAMPLES = 200
+TRAIN_SAMPLES = 8000 
+VAL_SAMPLES = 2000
 EPOCHS = 10
 BATCH_SIZE = 32
-OUTPUT_DIR = "research_v2_results"
+OUTPUT_DIR = "research_v2_results_3_8000_2000"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 gpus = tf.config.list_physical_devices('GPU')
