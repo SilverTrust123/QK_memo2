@@ -15,7 +15,7 @@ if gpus:
     for gpu in gpus:
         tf.config.experimental.set_memory_growth(gpu, True)
 
-# 設定參數
+
 NUM_CLASSES = 10
 INPUT_LENGTH = 2048
 TRAIN_SAMPLES = 500  
@@ -102,7 +102,7 @@ def fitness(pos):
     )
     score = np.max(history.history['val_accuracy'])
     
-    # 釋放記憶體避免 OOM
+    # 釋放記憶體
     K.clear_session()
     del model
     gc.collect()
@@ -160,7 +160,7 @@ print("Running baseline...")
 baseline_model = build_model(1e-3, 0.3)
 baseline_model.fit(x_train, y_train, epochs=EPOCHS, verbose=0, validation_data=(x_val, y_val))
 b_acc = max(baseline_model.history.history['val_accuracy'])
-baseline_model.save("baseline.keras")  # 更新為較新的 Keras 存檔格式
+baseline_model.save("baseline.keras")
 
 print("Running PSO...")
 best_pos, best_score, hist = pso("pso")
