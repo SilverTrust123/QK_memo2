@@ -15,7 +15,7 @@ DATA_SIZES = [16, 64, 128]
 N_TRIALS = 1
 N_EPOCHS = 50
 BATCH_SIZE = 64
-N_GPU = 0
+N_GPU = 1
 LOG_ROOT = "./EXPERIMENT_RESULTS"
 
 def get_balanced_subset(X, y, n_per_class):
